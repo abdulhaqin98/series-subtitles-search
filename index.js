@@ -34,6 +34,7 @@ async function fetchMovies() {
 
   html = '';
   document.getElementById('result').innerHTML = null;
+  // const response = await fetch('http://localhost:5000/api/word/' + key).then(res => res.json())
 
   const response = await fetch('https://series-subtitles-search-api.onrender.com/api/word/' + key).then(res => res.json())
     .then(data => {
@@ -43,7 +44,7 @@ async function fetchMovies() {
     );
 
   console.log(header);
-  console.log(body);
+  // console.log(body);
   // console.log(len);
 
   len = body.length;
@@ -60,7 +61,9 @@ async function fetchMovies() {
         <div class="card my-2 py-0">
         <div class="card-body justify-content-between py-1">
         <div class="d-flex justify-content-between py-1">
-                      <h6 class="card-title my-auto col-6">${body[j].series}</h6>
+                      <h6 class="card-title my-auto col-6">
+                        <a href="${body[j].url}" target="_blank" class="text-decoration-none text-dark">${body[j].series}</a>
+                      </h6>
                       <p >${body[j].episode}</p>
                       <p >${body[j].data[k].startTime}</p>
         </div>
